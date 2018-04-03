@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>URL</key>
+	<string>https://carbon.now.sh/?bg=rgba(89,189,153,0)&amp;t=material&amp;wt=none&amp;l=javascript&amp;ds=false&amp;dsyoff=20px&amp;dsblur=19px&amp;wc=true&amp;wa=true&amp;pv=12px&amp;ph=11px&amp;ln=true&amp;fm=Hack&amp;fs=14px&amp;si=false&amp;code=%252F**%2520----------%2520CheckoutView.js%2520----------%2520**%252F%250A%250Aimport%2520React%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520from%2520%27react%27%250Aimport%2520%257B%2520inject%252C%2520observer%2520%257D%2520from%2520%27mobx-react%27%250A%250A%2540inject(%27shop%27)%2520%2540observer%250Aclass%2520CheckoutView%2520extends%2520React.Component%2520%257B%250A%2509render()%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520const%2520%257B%2520shop%2520%257D%2520%253D%2520this.props%253B%250A%2520%2520%2520%2520%2509return%2520(%250A%2520%2520%2520%2520%2520%2520%2520%2520%2509Amount%253A%257B%2520shop.checkountAmount%2520%257D%250A%2509%2520%2520%2520%2520)%253B%250A%2520%2520%2520%2520%257D%250A%257D&amp;es=2x&amp;wm=false</string>
+</dict>
+</plist>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>URL</key>
+	<string>https://carbon.now.sh/?bg=rgba(89,189,153,0)&amp;t=material&amp;wt=none&amp;l=javascript&amp;ds=false&amp;dsyoff=20px&amp;dsblur=19px&amp;wc=true&amp;wa=true&amp;pv=12px&amp;ph=11px&amp;ln=true&amp;fm=Hack&amp;fs=14px&amp;si=false&amp;code=import%2520%257B%2520types%252C%2520getParent%2520%257D%2520from%2520%27mobx-state-tree%27%250A%250Aconst%2520ActionsWrapperStore%2520%253D%2520types%250A%2509.model(%27ActionsWrapperStore%27%252C%2520%257B%257D)%250A%2509.actions(self%2520%253D%253E%2520(%257B%250A%2509%2509login()%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520authStore.login()%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520pageStore.login()%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520navigationStore.login()%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520goHome()%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520pageStore.showDefault()%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520navigationStore.login()%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%257D))%253B&amp;es=2x&amp;wm=false</string>
+</dict>
+</plist>
