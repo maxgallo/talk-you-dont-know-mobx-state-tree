@@ -58,6 +58,7 @@ Side effects like updating a React component
 
 # [fit] __*M*__obX __*S*__tate __*T*__ree
 
+- Ready to use
 - Powered by MobX
 - Opinionated
 - Relies on the concept of Trees
@@ -115,10 +116,10 @@ How Stores communicate between each other
 
 ![left fit](assets/pdf/one_root_store.pdf)
 
-<br/>
-
 _Pros_
-Easier to perform actions on everything at once (snapshot, creation, destroy)
+
+- Easier to perform actions on everything at once (snapshot, creation, destroy).
+- Unique environment for dependency injection.
 
 _Cons_
 Very easy to create tightly coupled stores
@@ -135,7 +136,9 @@ _Pros_
 Easier to reason by Domain
 
 _Cons_
-Less immediate to perform actions on everything
+
+- Less immediate to perform actions on everything
+- Not single environment for dependency injection
 
 ---
 ## __*Real World*__
