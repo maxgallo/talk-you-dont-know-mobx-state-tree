@@ -20,10 +20,11 @@ _!twitter:_ maxgallo.io
 
 - _MobX_ intro
 - _MobX State Tree_ overview
-- Design a Reactive Project
+- Designing a Reactive Project
 - Best Practises
 
 ---
+^ MobX State Tree is powered by MobX
 
 # [fit] If _**MobX**_ is the Engine
 # [fit]_**MobX State Tree**_ is the Car
@@ -33,10 +34,13 @@ _!twitter:_ maxgallo.io
 # [fit]MobX
 # [fit]The __*engine*__ of the car
 
+- Decouples View from Business Logic
 - Uses Reactive paradigms
-- Decouples view from business logic
+- Unopinionated
 
 ---
+^ - Application State updates after render
+  - Non Decorator syntax available
 
 ![left fit](assets/codeExamples/mobx/carbon.png)
 
@@ -49,7 +53,7 @@ _**Computed Values**_
 Automatically derived values
 
 _**@Observer**_
-Subscribe to every observable in the render function
+Subscription to an observable state or computed value
 
 _**Reactions**_
 Side effects like updating a React component
@@ -58,12 +62,13 @@ Side effects like updating a React component
 
 # [fit] __*M*__obX __*S*__tate __*T*__ree
 
-- Ready to use
-- Powered by MobX
-- Opinionated
-- Relies on the concept of Trees
+- Opinionated / Ready to use
+- Powered by _*MobX*_
+- Relies on the concept of Trees (Stores)
 
 ---
+^ - Strongly Typed
+- Create an instance with `.create`
 
 ![left fit](assets/codeExamples/mobxStateTree/carbon.png)
 
@@ -72,7 +77,7 @@ Side effects like updating a React component
 
 _**Model**_
 Strongly typed mutable observable state that
-could contain other trees.
+could contain other trees
 
 _**Views**_
 MobX computed values
@@ -92,26 +97,28 @@ The only way to update the model
 ![fit](assets/codeExamples/mstViewJs/carbon.png)
 
 ---
-### MobX State Tree
-# Deep Dive 🐙
+### MobX State Tree __*Stores*__
+# [fit] Deep Dive 🐙
 
 - Mutable and Immutable (Snapshots, Time Travelling)
-- Store Composition
 - Dependency Injection
-- Store Lifecycle Methods
+- Composition
+- Lifecycle Methods
+
 
 ---
 
-# [fit] Designing __*Stores*__
-*You need to think about:*
+#[fit] Designing 🎨
+# __*Stores*__
 
-## 1. Shape your Trees
+*1. Shape your Trees*
 One Root Store vs Multiple Root Stores
-## 2. Stores Communication
+
+*2. Stores Communication*
 How Stores communicate between each other
 
 ---
-### MobX State Tree
+### __*Shape your trees*__
 # [fit] One Root Store
 
 ![left fit](assets/pdf/one_root_store.pdf)
@@ -126,8 +133,8 @@ Very easy to create tightly coupled stores
 
 ---
 
-### MobX State Tree
-# **Multiple Root Stores**
+### __*Shape your trees*__
+# Multiple Root Stores
 
 ![left fit](assets/pdf/multiple_root_store.pdf)
 
@@ -142,7 +149,7 @@ _Cons_
 
 ---
 ## __*Real World*__
-#[fit] Stores communication
+#[fit] Stores communication 📞
 
 1. Default Approach
 
@@ -151,7 +158,7 @@ _Cons_
 1. Dependency Injection
 
 ---
-### Stores Communication 1️⃣
+### __*Stores Communication*__
 #[fit] Default Approach
 Each Store access directly other Stores.
 <br/>
@@ -163,7 +170,7 @@ Each Store access directly other Stores.
 
 ---
 
-### Stores Communication 2️⃣
+### __*Stores Communication*__
 #[fit] Actions Wrapper
 One Store,
 to rule them all 🧙‍♂️🌋💍
@@ -177,7 +184,7 @@ to rule them all 🧙‍♂️🌋💍
 
 ---
 
-### Stores Communication 3️⃣
+### __*Stores Communication*__
 #[fit] Dependency Injection
 Injecting one or multiple stores into another one.
 <br/>
