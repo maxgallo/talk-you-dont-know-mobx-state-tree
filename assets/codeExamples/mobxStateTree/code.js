@@ -38,7 +38,7 @@ class CarParkView extends Component {
     }
 }
 
-const carParkStore = CarParkStore.create();
+const carParkStore = CarParkStore.create({ cars: ['Fiat 500']});
 
 ReactDOM.render(
     <CarParkView carPark={carParkStore} />,
