@@ -13,7 +13,7 @@ const NavigationStore = types
     })
     .view(self => ({
         get region() {
-            getEnv(self).navigationStore.region;  
+            getEnv(self).regionStore.region;
         },
         get urlPath() {
             return `${self.region}/${self.path}`;
@@ -24,7 +24,7 @@ const NavigationStore = types
 const regionStore = RegionStore.create({});
 const navigationStore = NavigationStore.create(
     { path: 'login'},
-    { regionStore } 
+    { regionStore }
 );
 
 console.log(navigationStore.urlPath); // 'UK/login'
