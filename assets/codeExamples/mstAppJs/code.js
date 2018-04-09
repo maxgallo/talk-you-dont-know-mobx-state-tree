@@ -1,11 +1,11 @@
 /** ------------- App.js --------------------- **/
 
-import { Provider }    from "mobx-react"
-import App             from "./App.js"
+import { Provider }    from 'mobx-react'
+import App             from './App.js'
 import ShopStore       from './Shop.store.js'
 import NavigationStore from './Navigation.store.js'
 
-const shopStore = ShopStore.create() 
+const shopStore = ShopStore.create()
 
 ReactDOM.render(
     <Provider
@@ -14,5 +14,5 @@ ReactDOM.render(
     >
         <App />
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 )
