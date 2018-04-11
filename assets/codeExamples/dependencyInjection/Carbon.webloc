@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>URL</key>
+	<string>https://carbon.now.sh/?bg=rgba(89,189,153,0)&amp;t=material&amp;wt=none&amp;l=javascript&amp;ds=false&amp;dsyoff=20px&amp;dsblur=19px&amp;wc=true&amp;wa=true&amp;pv=12px&amp;ph=11px&amp;ln=true&amp;fm=Hack&amp;fs=14px&amp;si=false&amp;code=import%2520%257B%2520getEnv%252C%2520types%2520%257D%2520from%2520%27mobx-state-tree%27%253B%2520%250A%250Aconst%2520CarParkStore%2520%253D%2520types%250A%2520%2520%2520%2520.model(%27CarPark%27%252C%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520cars%253A%2520types.array(CarStore)%252C%250A%2520%2520%2520%2520%257D)%250A%2520%2520%2520%2520.actions(self%2520%253D%253E%2520(%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520downloadCars()%2520%257B%2520%250A%2520%2520%2520%2520%2520%2520%2520%2520%2509getEnv(self).getCarsFromBackend()%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2509%2509.then(cars%2520%253D%253E%2520self.cars%2520%253D%2520cars)%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%257D))%253B%250A%250Aconst%2520getCarsFromBackend%2520%253D%2520function()%2520%257B%250A%2520%2520%2520%2520%252F**%2520Fetching%2520Cars%2520from%2520Backend%2520**%252F%250A%257D%250A%250Aconst%2520carParkStore%2520%253D%2520CarParkStore.create(%250A%2520%2520%2520%2520%257B%2520cars%253A%2520%255B%27Fiat%2520500%27%255D%2520%257D%252C%2520%2520%252F%252F%2520initial%2520state%250A%2520%2520%2520%2520%257B%2520getCarsFromBackend%2520%257D%2520%2520%2520%252F%252F%2520environment%250A)%253B&amp;es=2x&amp;wm=false</string>
+</dict>
+</plist>

@@ -13,7 +13,7 @@ const CarStore = types
 
 const CarParkStore = types
     .model('CarPark', {
-        cars: types.optional(types.array(CarStore), []),
+        cars: types.array(CarStore),
     })
     .views(self => ({
         get howManyFerrari(){

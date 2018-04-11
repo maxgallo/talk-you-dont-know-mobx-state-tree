@@ -3,6 +3,7 @@
 
 
 ---
+^Re-building DAZN 2.0 Front End
 
 # Hi 👋🏻
 ## [fit]I'm Max Gallo
@@ -11,7 +12,7 @@
 ![inline left 30%](assets/images/dazn.png)
 
 _twitter:_ @\_maxgallo (yes with an underscore)
-_!twitter:_ maxgallo.io
+_more:_ maxgallo.io
 
 --- 
 
@@ -24,6 +25,7 @@ _!twitter:_ maxgallo.io
 - Best Practises
 
 ---
+
 ^ MobX State Tree is powered by MobX
 
 # [fit] If _**MobX**_ is the Engine
@@ -39,6 +41,23 @@ _!twitter:_ maxgallo.io
 - Unopinionated
 
 ---
+^ - Observables, Computed Values, Observer, Reaction
+#[fit] MobX _**Pillars**_
+
+_**Observable state**_
+Mutable Application State
+
+_**Computed Values**_
+Automatically derived values
+
+_**@Observer**_
+Subscribing to observables
+
+_**Reactions**_
+Side effects like updating a React component
+
+---
+
 ^ - Application State updates after render
   - Non Decorator syntax available
 
@@ -53,7 +72,7 @@ _**Computed Values**_
 Automatically derived values
 
 _**@Observer**_
-Subscription to an observable state or computed value
+Subscribing to observables
 
 _**Reactions**_
 Side effects like updating a React component
@@ -67,7 +86,7 @@ Side effects like updating a React component
 - Relies on the concept of Trees (Stores)
 
 ---
-^ - Strongly Typed
+^ - Car inside Car Park
 - Create an instance with `.create`
 
 ![left fit](assets/codeExamples/mobxStateTree/carbon.png)
@@ -76,8 +95,10 @@ Side effects like updating a React component
 ### also known as __*Store*__
 
 _**Model**_
-Strongly typed mutable observable state that
-could contain other trees
+
+- Mutable observable state
+- Contains type information
+- Could contain other trees
 
 _**Views**_
 MobX computed values
@@ -92,6 +113,8 @@ The only way to update the model
 # How to connect __*Stores*__ with React components ?
 
 ---
+^ - Inject everywhere
+- Testing by overriding injections
 
 ![fit](assets/codeExamples/mstAppJs/carbon.png)
 ![fit](assets/codeExamples/mstViewJs/carbon.png)
@@ -101,10 +124,25 @@ The only way to update the model
 # [fit] Deep Dive 🐙
 
 - Mutable and Immutable (Snapshots, Time Travelling)
-- Dependency Injection
 - Composition
 - Lifecycle Methods
+- Dependency Injection
 
+---
+
+^ Examples: Logger, API calls 
+
+### MobX State Tree __*Stores*__
+# [fit] Dependency
+# [fit] Injection
+
+![left fit](assets/codeExamples/dependencyInjection/carbon.png)
+
+<br />
+
+- Inject anything
+- Environment is shared per tree
+- Useful for testing
 
 ---
 
@@ -169,6 +207,7 @@ Each Store access directly other Stores.
 ![left fit](assets/codeExamples/communicationDefault/carbon.png)
 
 ---
+^ The action caller is unaware of what's going on behind the scene
 
 ### __*Stores Communication*__
 #[fit] Actions Wrapper
@@ -190,7 +229,7 @@ Injecting one or multiple stores into another one.
 <br/>
  
 - You could use it for both **Actions** and **Views**
-- You need to be carefull about circular dependencies
+- Carefull about circular dependencies
 
 
 ![left fit](assets/codeExamples/communicationInjection/carbon.png)
@@ -203,21 +242,25 @@ Injecting one or multiple stores into another one.
 
 ---
 
-## Store
+## __*Store*__
 # Composition
 Two or more stores can be composed
 
 <br/>
 
-- Good separation of concerns
-- Reusability of the Stores
+- Separation of Concerns
+- Reusability
 
 ![left fit](assets/codeExamples/composition/carbon.png)
 
 
 ---
 
-### Composition
+^ - Mobile: Inertial Scrolling
+- Desktop: Scrolling with arrows
+- Renders only item in the view 
+
+### __*Composition*__
 # Real World Example 
 
 ![inline](assets/gif/mobileScroll.gif)![inline](assets/gif/desktopScroll.gif)
@@ -236,16 +279,18 @@ Holds the data to render
 Manages scrolling
 
 **Element Pooling Store**
-Render only in view
+Renders only in view
 
 
 ---
+^ - Avoid manual subscription
 
 ## Mindset 🧠
 #[fit] Derive everything
 <br />
 
-When you add a new property in the Model ask yourself: _can I derive it somehow ?_
+When you add a new property in the Model,
+ask yourself: _Can I derive it somehow ?_
 
 <br />
 > Anything that can be derived from the application state, should be derived. Automatically
@@ -269,4 +314,4 @@ When you add a new property in the Model ask yourself: _can I derive it somehow 
 
 🤓 github.com/maxgallo/you-dont-know-mobx-state-tree
 ✉️ hello@maxgallo.io
-_twitter_ @maxgallo
+_twitter_ @_maxgallo
