@@ -8,15 +8,11 @@ const RegionStore = types
 import { types, getEnv } from 'mobx-state-tree';
 
 const NavigationStore = types
-    .model('NavigationStore', {
-        path: types.string,
-    })
+    .model('NavigationStore', { path: types.string })
     .view(self => ({
-        get region() {
-            getEnv(self).regionStore.region;
-        },
         get urlPath() {
-            return `${self.region}/${self.path}`;
+            return getEnv(self).regionStore.region
+          		+ '/' + self.path;
         }
     }));
  
@@ -24,7 +20,7 @@ const NavigationStore = types
 const regionStore = RegionStore.create({});
 const navigationStore = NavigationStore.create(
     { path: 'login'},
-    { regionStore }
+    { regionStore } 
 );
 
 console.log(navigationStore.urlPath); // 'UK/login'
