@@ -9,9 +9,9 @@
 ## [fit]I'm Max Gallo
 # Principal Engineer at __*DAZN*__
 
-![inline left 30%](assets/images/dazn.png)
+![inline 40%](assets/images/dazn.png)
 
-_twitter:_ @\_maxgallo (yes with an underscore)
+_twitter:_ @\_maxgallo
 _more:_ maxgallo.io
 
 --- 
