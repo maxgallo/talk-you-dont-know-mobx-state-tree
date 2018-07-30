@@ -65,14 +65,11 @@ Side effects like updating a React component
 
 # MobX
 
-_**Observable state**_
+_**Observable State**_
 Mutable Application State
 
 _**Computed Values**_
 Automatically derived values
-
-_**@Observer**_
-Subscribing to observables
 
 _**Reactions**_
 Side effects like updating a React component
