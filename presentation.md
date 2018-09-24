@@ -3,90 +3,162 @@
 
 
 ---
-^Re-building DAZN 2.0 Front End
+
+![right](assets/images/me.jpg)
 
 # Hi 👋🏻
 ## [fit]I'm Max Gallo
-# Principal Engineer at __*DAZN*__
 
+About me:🍝 💻 🇬🇧 🎶 🏍 📷 ✈️ ✍️
+
+Principal Engineer @ DAZN
+<br />
 ![inline 40%](assets/images/dazn.png)
 
 _twitter:_ @\_maxgallo
 _more:_ maxgallo.io
 
---- 
-
-
-# [fit] The plan
-
-- _MobX_ intro
-- _MobX State Tree_ overview
-- Designing a Reactive Project
-- Best Practises
-
 ---
 
-^ MobX State Tree is powered by MobX
+# [fit] Agenda 
 
-# [fit] If _**MobX**_ is the Engine
-# [fit]_**MobX State Tree**_ is the Car
+- _Part One:_ MobX
+- _Part Two:_ MobX State Tree
+- _Part Three:_ Designing a Reactive Project
+
+---
+![background fill](assets/images/bg.png)
+
+# Part One
+## _**MobX**_
 
 ---
 
 # [fit]MobX
-# [fit]The __*engine*__ of the car
 
-- Decouples View from Business Logic
-- Uses Reactive paradigms
-- Unopinionated
+- Simple introduction to _Reactive Programming_
+- Flexible / Unopinionated
+- _Transparent_ Functional Reactive Programming 
+- Helps Decoupling View from Business Logic
 
 ---
-^ - Observables, Computed Values, Observer, Reaction
-#[fit] MobX _**Pillars**_
+
+# MobX _**Observables & reactions**_
+^ It's "Transparent" since we don't have manual subscription
+
+[.code-highlight: 1-6]
+[.code-highlight: 8-9]
+[.code-highlight: 8-13]
+
+```javascript
+import { observable, autorun} from 'mobx';
+
+const album = observable({
+	title: 'Californication',
+	playCount: 0,
+});
+
+autorun(() => console.log(`New play count: ${album.playCount}`))
+// New play count: 0
+
+album.playCount = 1; // New play count: 1
+
+album.playCount = 24; // New play count: 24
+```
+
+---
+^ - Computed values are derivation of the state
+- Computed values are observable
+- Computed values are lazily evaluated, only if observed
+
+# MobX _**Computed Values**_
+
+[.code-highlight: 1-6]
+[.code-highlight: 8-9]
+[.code-highlight: 8-11]
+[.code-highlight: 8-15]
+
+```javascript
+import { observable, autorun, computed} from 'mobx';
+
+const album = observable({
+	title: 'Californication',
+	playCount: 0,
+});
+
+const all = computed(() => album.title + album.playCount);
+
+autorun(() => console.log(all))
+// Californication0
+
+album.playCount = 1;        // Californication1
+album.title = 'OkComputer'; // OkComputer1
+album.playCount = 24;       // OkComputer24 
+```
+
+---
+
+#[fit] MobX _**Recap**_
 
 _**Observable state**_
 Mutable Application State
 
-_**Computed Values**_
-Automatically derived values
-
 _**Reactions**_
-Side effects like updating a React component
+Side effects like _autorun_ or updating a React component
+
+_**Computed Values**_
+Automatically derived values, lazily evaluated
 
 ---
 
-^ - Application State updates after render
-  - Non Decorator syntax available
+![background fill](assets/images/bg.png)
 
-![left fit](assets/codeExamples/mobx/carbon.png)
-
-# MobX
-
-_**Observable State**_
-Mutable Application State
-
-_**Computed Values**_
-Automatically derived values
-
-_**Reactions**_
-Side effects like updating a React component
+# Part Two
+## _**MobX State Tree**_
 
 ---
+
 
 # [fit] __*M*__obX __*S*__tate __*T*__ree
 
-- Opinionated / Ready to use
 - Powered by _*MobX*_
+- The State is strongly typed
+- Opinionated / Ready to use
 - Relies on the concept of Trees (Stores)
 
 ---
+# What's a __*Tree*__/__*Store*__ ?
+
+[.code-highlight: 1-6]
+[.code-highlight: 7-11]
+[.code-highlight: 1-11]
+[.code-highlight: 13-14]
+
+```javascript
+import { types } from 'mobx-state-tree';
+
+const CarStore = types
+	.model('Car', {             
+	    name: types.string       // mobx observable
+	})
+	.views(self => ({
+		get isFerrari() {        // mobx computed
+			return self.name.includes('Ferrari')
+		}
+	})
+	
+const carStore = CarStore.create({ name: 'Ferrari Enzo'});
+console.log(carStore.isFerrari); // true
+```
+
+
+---
 ^ - Car inside Car Park
-- Create an instance with `.create`
+- Type casting of CarStore
 
 ![left fit](assets/codeExamples/mobxStateTree/carbon.png)
 
-# What's a Tree ?
-### also known as __*Store*__
+#[fit] MobX State Tree _**Stores**_
 
 _**Model**_
 
@@ -137,6 +209,13 @@ The only way to update the model
 - Inject anything
 - Environment is shared per tree
 - Useful for testing
+
+---
+
+![background fill](assets/images/bg.png)
+
+# Part Three
+## _**Designing a reactive project**_
 
 ---
 
@@ -210,6 +289,7 @@ to rule them all 🧙‍♂️🌋💍
 <br/>
 
 - Calls directly other Stores
+- Friendly interface
 - Knows a lot about your App
 
 
@@ -223,7 +303,7 @@ Injecting one or multiple stores into another one.
 <br/>
  
 - You could use it for both **Actions** and **Views**
-- Carefull about circular dependencies
+- Circular dependencies while loading could be non-trivial
 
 
 ![left fit](assets/codeExamples/communicationInjection/carbon.png)
@@ -275,30 +355,38 @@ Manages scrolling
 **Element Pooling Store**
 Renders only in view
 
+---
+
+![background fill](assets/images/bg.png)
+
+# Conclusions
+## _**Derive Everything**_
 
 ---
+
 ^ - Avoid manual subscription
+  - Avoid undersubscribe or oversubscribe
 
-## Mindset 🧠
-#[fit] Derive everything
+Next time you're adding properties to the *Model*, <br/>ask yourself first
+
+
+# [fit] _Can I derive it?_ 🤔
+
 <br />
 
-When you add a new property in the Model,
-ask yourself: _Can I derive it somehow ?_
-
-<br />
-> Anything that can be derived from the application state, should be derived. Automatically
+> _Anything that can be derived from the application state, should be derived. Automatically_
+--- Michel Weststrate
 
 ---
 
 
-#[fit] Takeaways
+#[fit] Takeaways 🖇
 
-- MobX helps you decoupling your code
-- MobX State Tree provides a structure 
+- *MobX* opens the doors of _Reactive Programming_
+- *MobX State Tree* provides a structure 
 - Shape your tree & setup the communication
-- Embrace Composition!
-- Embrace Reactivity!
+- Embrace *Composition*!
+- Embrace *Reactivity*!
 
 ---
 
@@ -308,4 +396,5 @@ ask yourself: _Can I derive it somehow ?_
 
 🤓 github.com/maxgallo/you-dont-know-mobx-state-tree
 ✉️ hello@maxgallo.io
-_twitter_ @_maxgallo
+_twitter_ @\_maxgallo
+_web_ maxgallo.io
