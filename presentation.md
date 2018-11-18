@@ -1,6 +1,11 @@
 # [fit]You Don't know
 # [fit]_**M**_obX _**S**_tate _**T**_ree
 
+Berlin _|_ 20-21 November 2018
+
+<br />
+
+![inline 120%](assets/images/codemotion.png) ![inline 25%](assets/images/CC.png)
 
 ---
 
