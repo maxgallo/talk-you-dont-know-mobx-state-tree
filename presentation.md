@@ -26,6 +26,9 @@ _more:_ maxgallo.io
 ---
 
 # [fit] Agenda 
+[.build-lists: true]
+
+<br />
 
 - _Part One:_ MobX
 - _Part Two:_ MobX State Tree
@@ -41,10 +44,11 @@ _more:_ maxgallo.io
 
 # [fit]MobX
 
+[.build-lists: true]
 - Simple introduction to _Reactive Programming_
 - Flexible / Unopinionated
 - _Transparent_ Functional Reactive Programming 
-- Helps Decoupling View from Business Logic
+- Helps decoupling View from Business Logic
 
 ---
 
@@ -126,9 +130,13 @@ Automatically derived values, lazily evaluated
 
 # [fit] __*M*__obX __*S*__tate __*T*__ree
 
+[.build-lists: true]
+
+<br />
+
 - Powered by _*MobX*_
-- The State is strongly typed
-- Opinionated / Ready to use
+- Runtime typed Application State
+- Opinionated & ready to use
 - Relies on the concept of Trees (Stores)
 
 ---
@@ -138,6 +146,7 @@ Automatically derived values, lazily evaluated
 [.code-highlight: 7-11]
 [.code-highlight: 1-11]
 [.code-highlight: 13-14]
+[.code-highlight: 1-14]
 
 ```javascript
 import { types } from 'mobx-state-tree';
