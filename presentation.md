@@ -45,9 +45,9 @@ _more:_ maxgallo.io
 # [fit]MobX
 
 [.build-lists: true]
-- Simple introduction to _Reactive Programming_
+- State Management Library
 - Flexible / Unopinionated
-- _Transparent_ Functional Reactive Programming 
+- _Transparent_ Reactive Programming
 - Helps decoupling View from Business Logic
 
 ---
@@ -58,6 +58,7 @@ _more:_ maxgallo.io
 [.code-highlight: 1-6]
 [.code-highlight: 8-9]
 [.code-highlight: 8-13]
+[.code-highlight: 1-13]
 
 ```javascript
 import { observable, autorun} from 'mobx';
@@ -86,6 +87,7 @@ album.playCount = 24; // New play count: 24
 [.code-highlight: 8-9]
 [.code-highlight: 8-11]
 [.code-highlight: 8-15]
+[.code-highlight: 1-15]
 
 ```javascript
 import { observable, autorun, computed} from 'mobx';
@@ -142,27 +144,30 @@ Automatically derived values, lazily evaluated
 ---
 # What's a __*Tree*__/__*Store*__ ?
 
-[.code-highlight: 1-6]
-[.code-highlight: 7-11]
-[.code-highlight: 1-11]
-[.code-highlight: 13-14]
-[.code-highlight: 1-14]
+[.code-highlight: 1-7]
+[.code-highlight: 8-12]
+[.code-highlight: 1-12]
+[.code-highlight: 14-18]
+[.code-highlight: 1-18]
 
 ```javascript
 import { types } from 'mobx-state-tree';
 
-const CarStore = types
-	.model('Car', {             
-	    name: types.string       // mobx observable
+const AlbumStore = types
+	.model('Album', {
+	    title: types.string,       // mobx observable
+	    rating: types.integer,     // mobx observable
 	})
 	.views(self => ({
-		get isFerrari() {        // mobx computed
-			return self.name.includes('Ferrari')
+		get isGood() {              // mobx computed
+			return self.rating >= 7
 		}
-	})
+	}));
 	
-const carStore = CarStore.create({ name: 'Ferrari Enzo'});
-console.log(carStore.isFerrari); // true
+const okComputer = AlbumStore
+    .create({ title: 'Ok Computer', rating: 8});
+
+console.log(okComputer.isGood); // true
 ```
 
 
@@ -177,7 +182,7 @@ console.log(carStore.isFerrari); // true
 _**Model**_
 
 - Mutable observable state
-- Contains type information
+- Runtime type information
 - Could contain other trees
 
 _**Views**_
@@ -188,9 +193,11 @@ The only way to update the model
 
 ---
 
-### MobX State Tree
+#### MobX State Tree
 
-# How to connect __*Stores*__ with React components ?
+# How to connect
+# [fit]__*the Stores*__
+# with the View ?
 
 ---
 ^ - Inject everywhere
@@ -210,7 +217,7 @@ The only way to update the model
 
 ---
 
-^ Examples: Logger, API calls 
+^ Examples: Logger, API calls
 
 ### MobX State Tree __*Stores*__
 # [fit] Dependency
@@ -246,7 +253,7 @@ How Stores communicate between each other
 ### __*Shape your trees*__
 # [fit] One Root Store
 
-![left fit](assets/pdf/one_root_store.pdf)
+![left 190%](assets/pdf/one_root_store.pdf)
 
 _Pros_
 
@@ -261,7 +268,7 @@ Very easy to create tightly coupled stores
 ### __*Shape your trees*__
 # Multiple Root Stores
 
-![left fit](assets/pdf/multiple_root_store.pdf)
+![left 190%](assets/pdf/multiple_root_store.pdf)
 
 
 _Pros_
@@ -275,6 +282,8 @@ _Cons_
 ---
 ## __*Real World*__
 #[fit] Stores communication 📞
+
+<br />
 
 1. Default Approach
 

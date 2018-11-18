@@ -3,47 +3,59 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { types } from 'mobx-state-tree';
 
-const CarStore = types
-    .model('Car', {
-        name: types.string
+const AlbumStore = types
+    .model('Album', {
+        title: types.string,
+        rating: types.integer
     })
     .views(self => ({
-        get isFerrari() {
-            return self.name.includes('Ferrari');
+        get isGood() {
+            return self.rating >= 7;
         }
     }));
 
-const CarParkStore = types
-    .model('CarPark', {
-        cars: types.array(CarStore)
+const MusicLibraryStore = types
+    .model('MusicLibrary', {
+        albums: types.array(AlbumStore)
     })
+    .views(self => ({
+        get goodAlbums() {
+            return self.albums.filter(x => x.isGood);
+        }
+    }))
     .actions(self => ({
-        addCar(car) {
-            self.cars.push(car);
+        addAlbum(car) {
+            self.albums.push(car);
         }
     }));
 
 @observer
-class CarParkView extends Component {
-    renderCar(car) {
-        return <li key={car.name}>{car.name}</li>;
+class MusicLibraryView extends Component {
+    renderAlbum(album) {
+        return (
+            <li key={album.title}>
+                {album.title} | Rating: {album.rating}
+            </li>
+        );
     }
     render() {
-        const { carPark } = this.props;
+        const { musicLibrary } = this.props;
         return (
             <div>
-                <ul>{carPark.cars.map(this.renderCar)} </ul>
+                <ul>{musicLibrary.albums.map(this.renderAlbum)} </ul>
             </div>
         );
     }
 }
 
-const carParkStore = CarParkStore.create({ cars: [{ name: 'Fiat 500' }] });
+const musicLibrary = MusicLibraryStore.create({
+    albums: [{ title: 'Rumours', rating: 9 }]
+});
 
 ReactDOM.render(
-    <CarParkView carPark={carParkStore} />,
-    document.getElementById('root')
+    <MusicLibraryView musicLibrary={musicLibrary} />,
+    document.getElementById('app')
 );
 
-carParkStore.addCar({ name: 'Ferrari 458 Italia' });
-carParkStore.addCar({ name: 'Ferrari Enzo' });
+musicLibrary.addAlbum({ title: 'Harvest', rating: 8 });
+musicLibrary.addAlbum({ title: 'Ten', rating: 9 });
