@@ -5,7 +5,7 @@ Berlin _|_ 20-21 November 2018
 
 <br />
 
-![inline 120%](assets/images/codemotion.png) ![inline 25%](assets/images/CC.png)
+![inline 130%](assets/images/codemotion.png)
 
 ---
 
@@ -46,9 +46,9 @@ _more:_ maxgallo.io
 
 [.build-lists: true]
 - State Management Library
-- Flexible / Unopinionated
-- _Transparent_ Reactive Programming
 - Helps decoupling View from Business Logic
+- _Transparent_ Reactive Programming
+- Flexible / Unopinionated
 
 ---
 
@@ -154,9 +154,9 @@ Automatically derived values, lazily evaluated
 import { types } from 'mobx-state-tree';
 
 const AlbumStore = types
-	.model('Album', {
-	    title: types.string,       // mobx observable
-	    rating: types.integer,     // mobx observable
+	.model('Album', {              // mobx observable
+	    title: types.string,
+	    rating: types.integer,
 	})
 	.views(self => ({
 		get isGood() {              // mobx computed
@@ -172,8 +172,8 @@ console.log(okComputer.isGood); // true
 
 
 ---
-^ - Car inside Car Park
-- Type casting of CarStore
+^ - Album inside Music Store
+- Type casting of AlbumStore
 
 ![left fit](assets/codeExamples/mobxStateTree/carbon.png)
 
@@ -390,8 +390,7 @@ Renders only in view
 ^ - Avoid manual subscription
   - Avoid undersubscribe or oversubscribe
 
-Next time you're adding properties to the *Model*, <br/>ask yourself first
-
+<br/>
 
 # [fit] _Can I derive it?_ 🤔
 
@@ -421,3 +420,5 @@ Next time you're adding properties to the *Model*, <br/>ask yourself first
 ✉️ hello@maxgallo.io
 _twitter_ @\_maxgallo
 _web_ maxgallo.io
+
+[.footer: ![inline 25%](assets/images/CC.png)]
