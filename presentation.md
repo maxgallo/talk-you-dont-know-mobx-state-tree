@@ -1,5 +1,5 @@
 # [fit]You Don't know
-# [fit]_**M**_obX _**S**_tate _**T**_ree
+# [fit]__*M*__obX __*S*__tate __*T*__ree
 
 Berlin _|_ 20-21 November 2018
 
@@ -56,7 +56,7 @@ _more:_ maxgallo.io
 ^ It's "Transparent" since we don't have manual subscription
 
 [.code-highlight: 1-6]
-[.code-highlight: 8-9]
+[.code-highlight: 1-9]
 [.code-highlight: 8-13]
 [.code-highlight: 1-13]
 
@@ -114,11 +114,33 @@ album.playCount = 24;       // OkComputer24
 _**Observable state**_
 Mutable Application State
 
+_**Computed Values**_
+Automatically derived values, lazily evaluated
+
 _**Reactions**_
 Side effects like _autorun_ or updating a React component
 
-_**Computed Values**_
-Automatically derived values, lazily evaluated
+---
+
+# MobX ❤️ React
+
+```javascript
+const album = observable({
+	title: 'Californication',
+	playCount: 0,
+});
+
+@observable
+class MyComponent extends React.Component {
+	render() {
+		return `Californication album.playCount`;
+	}
+}
+
+album.playCount++    // ----> React Render
+album.playCount = 9  // ----> React Render
+```
+
 
 ---
 
@@ -164,8 +186,9 @@ const AlbumStore = types
 		}
 	}));
 	
-const okComputer = AlbumStore
-    .create({ title: 'Ok Computer', rating: 8});
+const okComputer = AlbumStore.create(
+	{ title: 'Ok Computer', rating: 8}
+);
 
 console.log(okComputer.isGood); // true
 ```
@@ -255,12 +278,12 @@ How Stores communicate between each other
 
 ![left 190%](assets/pdf/one_root_store.pdf)
 
-_Pros_
+_Pros_ 👍
 
 - Easier to perform actions on everything at once (snapshot, creation, destroy).
 - Unique environment for dependency injection.
 
-_Cons_
+_Cons_ 👎
 Very easy to create tightly coupled stores
 
 ---
@@ -271,10 +294,10 @@ Very easy to create tightly coupled stores
 ![left 190%](assets/pdf/multiple_root_store.pdf)
 
 
-_Pros_
+_Pros_ 👍
 Easier to reason by Domain
 
-_Cons_
+_Cons_ 👎
 
 - Less immediate to perform actions on everything
 - Not single environment for dependency injection
@@ -339,9 +362,10 @@ Injecting one or multiple stores into another one.
 
 ---
 
+<br />
+
 ## __*Store*__
-# Composition
-Two or more stores can be composed
+# [fit] Composition
 
 <br/>
 
@@ -366,17 +390,12 @@ Two or more stores can be composed
 
 ![left fit](assets/pdf/composition.pdf)
 
+<br />
+<br />
+
 ### Composition
-# Real World Example 
-
-**Data Store**
-Holds the data to render
-
-**Inertial/Arrow Scrolling**
-Manages scrolling
-
-**Element Pooling Store**
-Renders only in view
+# [fit] Real World
+# [fit] __*Example*__
 
 ---
 
@@ -390,13 +409,7 @@ Renders only in view
 ^ - Avoid manual subscription
   - Avoid undersubscribe or oversubscribe
 
-<br/>
-
-# [fit] _Can I derive it?_ 🤔
-
-<br />
-
-> _Anything that can be derived from the application state, should be derived. Automatically_
+> _Anything that **can be derived** from the application state, **should be derived**. Automatically_
 --- Michel Weststrate
 
 ---
