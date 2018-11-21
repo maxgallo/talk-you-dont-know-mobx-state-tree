@@ -3,9 +3,10 @@
 
 Berlin _|_ 20-21 November 2018
 
-<br />
+Max Gallo _|_ @_maxgallo
 
-![inline 130%](assets/images/codemotion.png)
+
+[.footer: ![inline 110%](assets/images/codemotion.png)]
 
 ---
 
