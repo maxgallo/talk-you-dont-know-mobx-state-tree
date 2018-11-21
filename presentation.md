@@ -1,6 +1,12 @@
 # [fit]You Don't know
-# [fit]_**M**_obX _**S**_tate _**T**_ree
+# [fit]__*M*__obX __*S*__tate __*T*__ree
 
+Berlin _|_ 20-21 November 2018
+
+Max Gallo _|_ @_maxgallo
+
+
+[.footer: ![inline 110%](assets/images/codemotion.png)]
 
 ---
 
@@ -21,6 +27,9 @@ _more:_ maxgallo.io
 ---
 
 # [fit] Agenda 
+[.build-lists: true]
+
+<br />
 
 - _Part One:_ MobX
 - _Part Two:_ MobX State Tree
@@ -36,10 +45,11 @@ _more:_ maxgallo.io
 
 # [fit]MobX
 
-- Simple introduction to _Reactive Programming_
+[.build-lists: true]
+- State Management Library
+- Helps decoupling View from Business Logic
+- _Transparent_ Reactive Programming
 - Flexible / Unopinionated
-- _Transparent_ Functional Reactive Programming 
-- Helps Decoupling View from Business Logic
 
 ---
 
@@ -47,8 +57,9 @@ _more:_ maxgallo.io
 ^ It's "Transparent" since we don't have manual subscription
 
 [.code-highlight: 1-6]
-[.code-highlight: 8-9]
+[.code-highlight: 1-9]
 [.code-highlight: 8-13]
+[.code-highlight: 1-13]
 
 ```javascript
 import { observable, autorun} from 'mobx';
@@ -77,6 +88,7 @@ album.playCount = 24; // New play count: 24
 [.code-highlight: 8-9]
 [.code-highlight: 8-11]
 [.code-highlight: 8-15]
+[.code-highlight: 1-15]
 
 ```javascript
 import { observable, autorun, computed} from 'mobx';
@@ -103,11 +115,33 @@ album.playCount = 24;       // OkComputer24
 _**Observable state**_
 Mutable Application State
 
+_**Computed Values**_
+Automatically derived values, lazily evaluated
+
 _**Reactions**_
 Side effects like _autorun_ or updating a React component
 
-_**Computed Values**_
-Automatically derived values, lazily evaluated
+---
+
+# MobX ❤️ React
+
+```javascript
+const album = observable({
+	title: 'Californication',
+	playCount: 0,
+});
+
+@observable
+class MyComponent extends React.Component {
+	render() {
+		return `Californication album.playCount`;
+	}
+}
+
+album.playCount++    // ----> React Render
+album.playCount = 9  // ----> React Render
+```
+
 
 ---
 
@@ -121,40 +155,49 @@ Automatically derived values, lazily evaluated
 
 # [fit] __*M*__obX __*S*__tate __*T*__ree
 
+[.build-lists: true]
+
+<br />
+
 - Powered by _*MobX*_
-- The State is strongly typed
-- Opinionated / Ready to use
+- Runtime typed Application State
+- Opinionated & ready to use
 - Relies on the concept of Trees (Stores)
 
 ---
 # What's a __*Tree*__/__*Store*__ ?
 
-[.code-highlight: 1-6]
-[.code-highlight: 7-11]
-[.code-highlight: 1-11]
-[.code-highlight: 13-14]
+[.code-highlight: 1-7]
+[.code-highlight: 8-12]
+[.code-highlight: 1-12]
+[.code-highlight: 14-18]
+[.code-highlight: 1-18]
 
 ```javascript
 import { types } from 'mobx-state-tree';
 
-const CarStore = types
-	.model('Car', {             
-	    name: types.string       // mobx observable
+const AlbumStore = types
+	.model('Album', {              // mobx observable
+	    title: types.string,
+	    rating: types.integer,
 	})
 	.views(self => ({
-		get isFerrari() {        // mobx computed
-			return self.name.includes('Ferrari')
+		get isGood() {              // mobx computed
+			return self.rating >= 7
 		}
-	})
+	}));
 	
-const carStore = CarStore.create({ name: 'Ferrari Enzo'});
-console.log(carStore.isFerrari); // true
+const okComputer = AlbumStore.create(
+	{ title: 'Ok Computer', rating: 8}
+);
+
+console.log(okComputer.isGood); // true
 ```
 
 
 ---
-^ - Car inside Car Park
-- Type casting of CarStore
+^ - Album inside Music Store
+- Type casting of AlbumStore
 
 ![left fit](assets/codeExamples/mobxStateTree/carbon.png)
 
@@ -163,7 +206,7 @@ console.log(carStore.isFerrari); // true
 _**Model**_
 
 - Mutable observable state
-- Contains type information
+- Runtime type information
 - Could contain other trees
 
 _**Views**_
@@ -174,9 +217,11 @@ The only way to update the model
 
 ---
 
-### MobX State Tree
+#### MobX State Tree
 
-# How to connect __*Stores*__ with React components ?
+# How to connect
+# [fit]__*the Stores*__
+# with the View ?
 
 ---
 ^ - Inject everywhere
@@ -196,7 +241,7 @@ The only way to update the model
 
 ---
 
-^ Examples: Logger, API calls 
+^ Examples: Logger, API calls
 
 ### MobX State Tree __*Stores*__
 # [fit] Dependency
@@ -232,14 +277,14 @@ How Stores communicate between each other
 ### __*Shape your trees*__
 # [fit] One Root Store
 
-![left fit](assets/pdf/one_root_store.pdf)
+![left 190%](assets/pdf/one_root_store.pdf)
 
-_Pros_
+_Pros_ 👍
 
 - Easier to perform actions on everything at once (snapshot, creation, destroy).
 - Unique environment for dependency injection.
 
-_Cons_
+_Cons_ 👎
 Very easy to create tightly coupled stores
 
 ---
@@ -247,13 +292,13 @@ Very easy to create tightly coupled stores
 ### __*Shape your trees*__
 # Multiple Root Stores
 
-![left fit](assets/pdf/multiple_root_store.pdf)
+![left 190%](assets/pdf/multiple_root_store.pdf)
 
 
-_Pros_
+_Pros_ 👍
 Easier to reason by Domain
 
-_Cons_
+_Cons_ 👎
 
 - Less immediate to perform actions on everything
 - Not single environment for dependency injection
@@ -261,6 +306,8 @@ _Cons_
 ---
 ## __*Real World*__
 #[fit] Stores communication 📞
+
+<br />
 
 1. Default Approach
 
@@ -316,9 +363,10 @@ Injecting one or multiple stores into another one.
 
 ---
 
+<br />
+
 ## __*Store*__
-# Composition
-Two or more stores can be composed
+# [fit] Composition
 
 <br/>
 
@@ -343,17 +391,12 @@ Two or more stores can be composed
 
 ![left fit](assets/pdf/composition.pdf)
 
+<br />
+<br />
+
 ### Composition
-# Real World Example 
-
-**Data Store**
-Holds the data to render
-
-**Inertial/Arrow Scrolling**
-Manages scrolling
-
-**Element Pooling Store**
-Renders only in view
+# [fit] Real World
+# [fit] __*Example*__
 
 ---
 
@@ -367,14 +410,7 @@ Renders only in view
 ^ - Avoid manual subscription
   - Avoid undersubscribe or oversubscribe
 
-Next time you're adding properties to the *Model*, <br/>ask yourself first
-
-
-# [fit] _Can I derive it?_ 🤔
-
-<br />
-
-> _Anything that can be derived from the application state, should be derived. Automatically_
+> _Anything that **can be derived** from the application state, **should be derived**. Automatically_
 --- Michel Weststrate
 
 ---
@@ -398,3 +434,5 @@ Next time you're adding properties to the *Model*, <br/>ask yourself first
 ✉️ hello@maxgallo.io
 _twitter_ @\_maxgallo
 _web_ maxgallo.io
+
+[.footer: ![inline 25%](assets/images/CC.png)]
