@@ -1,7 +1,7 @@
 # [fit]You Don't know
 # [fit]__*M*__obX __*S*__tate __*T*__ree
 
-Berlin _|_ 20-21 November 2018
+Milan _|_ 29-30 November 2018
 
 Max Gallo _|_ @_maxgallo
 
