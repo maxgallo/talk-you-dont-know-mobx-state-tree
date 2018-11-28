@@ -132,16 +132,18 @@ const album = observable({
 });
 
 @observable
-class MyComponent extends React.Component {
+class PlayCount extends React.Component {
 	render() {
-		return `Californication album.playCount`;
+		return album.playCount;
 	}
 }
 
 album.playCount++    // ----> React Render
 album.playCount = 9  // ----> React Render
 ```
+---
 
+![inline](assets/gif/magic.gif)
 
 ---
 
@@ -318,13 +320,18 @@ _Cons_ 👎
 ---
 ### __*Stores Communication*__
 #[fit] Default Approach
-Each Store access directly other Stores.
+```javascript
+getParent().getParent().languageStore
+```
 <br/>
 
 - Easier when using a Single Root Store
 - Each Store could end up knowing the whole structure ⚠️
 
-![left fit](assets/codeExamples/communicationDefault/carbon.png)
+
+
+
+![left 190%](assets/pdf/default_approach.pdf)
 
 ---
 ^ The action caller is unaware of what's going on behind the scene
@@ -339,8 +346,22 @@ to rule them all 🧙‍♂️🌋💍
 - Friendly interface
 - Knows a lot about your App
 
+![left 170%](assets/pdf/actions_wrapper_0.pdf)
 
-![left fit](assets/codeExamples/communicationWrapper/carbon.png)
+---
+^ The action caller is unaware of what's going on behind the scene
+
+### __*Stores Communication*__
+#[fit] Actions Wrapper
+One Store,
+to rule them all 🧙‍♂️🌋💍
+<br/>
+
+- Calls directly other Stores
+- Friendly interface
+- Knows a lot about your App
+
+![left 170%](assets/pdf/actions_wrapper_1.pdf)
 
 ---
 
