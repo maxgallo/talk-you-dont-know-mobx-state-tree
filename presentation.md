@@ -1,7 +1,7 @@
 # [fit]You Don't know
 # [fit]__*M*__obX __*S*__tate __*T*__ree
 
-Berlin _|_ 20-21 November 2018
+Milan _|_ 29-30 November 2018
 
 Max Gallo _|_ @_maxgallo
 
@@ -48,7 +48,7 @@ _more:_ maxgallo.io
 [.build-lists: true]
 - State Management Library
 - Helps decoupling View from Business Logic
-- _Transparent_ Reactive Programming
+- Reactive Programming
 - Flexible / Unopinionated
 
 ---
@@ -85,7 +85,7 @@ album.playCount = 24; // New play count: 24
 # MobX _**Computed Values**_
 
 [.code-highlight: 1-6]
-[.code-highlight: 8-9]
+[.code-highlight: 1-9]
 [.code-highlight: 8-11]
 [.code-highlight: 8-15]
 [.code-highlight: 1-15]
@@ -132,16 +132,18 @@ const album = observable({
 });
 
 @observable
-class MyComponent extends React.Component {
+class PlayCount extends React.Component {
 	render() {
-		return `Californication album.playCount`;
+		return album.playCount;
 	}
 }
 
 album.playCount++    // ----> React Render
 album.playCount = 9  // ----> React Render
 ```
+---
 
+![inline 130%](assets/gif/wow.gif)
 
 ---
 
@@ -217,20 +219,6 @@ The only way to update the model
 
 ---
 
-#### MobX State Tree
-
-# How to connect
-# [fit]__*the Stores*__
-# with the View ?
-
----
-^ - Inject everywhere
-- Testing by overriding injections
-
-![fit](assets/codeExamples/mstAppJs/carbon.png)
-![fit](assets/codeExamples/mstViewJs/carbon.png)
-
----
 ### MobX State Tree __*Stores*__
 # [fit] Deep Dive 🐙
 
@@ -254,6 +242,21 @@ The only way to update the model
 - Inject anything
 - Environment is shared per tree
 - Useful for testing
+
+---
+
+#### MobX State Tree
+
+# How to connect
+# [fit]__*the Stores*__
+# with the View ?
+
+---
+^ - Inject everywhere
+- Testing by overriding injections
+
+![fit](assets/codeExamples/mstAppJs/carbon.png)
+![fit](assets/codeExamples/mstViewJs/carbon.png)
 
 ---
 
@@ -318,13 +321,28 @@ _Cons_ 👎
 ---
 ### __*Stores Communication*__
 #[fit] Default Approach
-Each Store access directly other Stores.
+<br/>
 <br/>
 
 - Easier when using a Single Root Store
 - Each Store could end up knowing the whole structure ⚠️
 
-![left fit](assets/codeExamples/communicationDefault/carbon.png)
+
+![left 190%](assets/pdf/default_approach_0.pdf)
+
+---
+### __*Stores Communication*__
+#[fit] Default Approach
+```javascript
+getParent().getParent().languageStore
+```
+<br/>
+
+- Easier when using a Single Root Store
+- Each Store could end up knowing the whole structure ⚠️
+
+
+![left 190%](assets/pdf/default_approach_1.pdf)
 
 ---
 ^ The action caller is unaware of what's going on behind the scene
@@ -339,8 +357,49 @@ to rule them all 🧙‍♂️🌋💍
 - Friendly interface
 - Knows a lot about your App
 
+![left 170%](assets/pdf/actions_wrapper_0.pdf)
 
-![left fit](assets/codeExamples/communicationWrapper/carbon.png)
+---
+
+### __*Stores Communication*__
+#[fit] Actions Wrapper
+One Store,
+to rule them all 🧙‍♂️🌋💍
+<br/>
+
+- Calls directly other Stores
+- Friendly interface
+- Knows a lot about your App
+
+![left 170%](assets/pdf/actions_wrapper_1.pdf)
+
+---
+
+### __*Stores Communication*__
+#[fit] Actions Wrapper
+One Store,
+to rule them all 🧙‍♂️🌋💍
+<br/>
+
+- Calls directly other Stores
+- Friendly interface
+- Knows a lot about your App
+
+![left 170%](assets/pdf/actions_wrapper_2.pdf)
+
+---
+
+### __*Stores Communication*__
+#[fit] Actions Wrapper
+One Store,
+to rule them all 🧙‍♂️🌋💍
+<br/>
+
+- Calls directly other Stores
+- Friendly interface
+- Knows a lot about your App
+
+![left 170%](assets/pdf/actions_wrapper_3.pdf)
 
 ---
 
@@ -365,15 +424,17 @@ Injecting one or multiple stores into another one.
 
 <br />
 
-## __*Store*__
+## [fit] __*Store*__
 # [fit] Composition
 
-<br/>
+```javascript
+const BlueRectangleStore = types.compose(
+	BlueStore,
+	RectangleStore
+);
+```
 
-- Separation of Concerns
-- Reusability
-
-![left fit](assets/codeExamples/composition/carbon.png)
+![right 170%](assets/pdf/composition_theory.pdf)
 
 
 ---
@@ -389,7 +450,7 @@ Injecting one or multiple stores into another one.
 
 ---
 
-![left fit](assets/pdf/composition.pdf)
+![left 150%](assets/pdf/composition.pdf)
 
 <br />
 <br />
@@ -415,14 +476,14 @@ Injecting one or multiple stores into another one.
 
 ---
 
-
 #[fit] Takeaways 🖇
 
-- *MobX* opens the doors of _Reactive Programming_
-- *MobX State Tree* provides a structure 
+<br />
+
+- Use *MobX* to learn _Reactive Programming_
+- *MobX State Tree* provides a structure
 - Shape your tree & setup the communication
-- Embrace *Composition*!
-- Embrace *Reactivity*!
+- Embrace *Composition*, embrace *Reactivity*!
 
 ---
 
