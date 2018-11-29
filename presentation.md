@@ -423,15 +423,17 @@ Injecting one or multiple stores into another one.
 
 <br />
 
-## __*Store*__
+## [fit] __*Store*__
 # [fit] Composition
 
-<br/>
+```javascript
+const BlueRectangleStore = types.compose(
+	BlueStore,
+	RectangleStore
+);
+```
 
-- Separation of Concerns
-- Reusability
-
-![left fit](assets/codeExamples/composition/carbon.png)
+![right 170%](assets/pdf/composition_theory.pdf)
 
 
 ---
