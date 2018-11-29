@@ -449,7 +449,7 @@ const BlueRectangleStore = types.compose(
 
 ---
 
-![left fit](assets/pdf/composition.pdf)
+![left 150%](assets/pdf/composition.pdf)
 
 <br />
 <br />
