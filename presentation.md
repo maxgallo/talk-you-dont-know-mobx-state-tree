@@ -320,6 +320,18 @@ _Cons_ 👎
 ---
 ### __*Stores Communication*__
 #[fit] Default Approach
+<br/>
+<br/>
+
+- Easier when using a Single Root Store
+- Each Store could end up knowing the whole structure ⚠️
+
+
+![left 190%](assets/pdf/default_approach_0.pdf)
+
+---
+### __*Stores Communication*__
+#[fit] Default Approach
 ```javascript
 getParent().getParent().languageStore
 ```
@@ -329,9 +341,7 @@ getParent().getParent().languageStore
 - Each Store could end up knowing the whole structure ⚠️
 
 
-
-
-![left 190%](assets/pdf/default_approach.pdf)
+![left 190%](assets/pdf/default_approach_1.pdf)
 
 ---
 ^ The action caller is unaware of what's going on behind the scene
@@ -349,7 +359,6 @@ to rule them all 🧙‍♂️🌋💍
 ![left 170%](assets/pdf/actions_wrapper_0.pdf)
 
 ---
-^ The action caller is unaware of what's going on behind the scene
 
 ### __*Stores Communication*__
 #[fit] Actions Wrapper
@@ -362,6 +371,34 @@ to rule them all 🧙‍♂️🌋💍
 - Knows a lot about your App
 
 ![left 170%](assets/pdf/actions_wrapper_1.pdf)
+
+---
+
+### __*Stores Communication*__
+#[fit] Actions Wrapper
+One Store,
+to rule them all 🧙‍♂️🌋💍
+<br/>
+
+- Calls directly other Stores
+- Friendly interface
+- Knows a lot about your App
+
+![left 170%](assets/pdf/actions_wrapper_2.pdf)
+
+---
+
+### __*Stores Communication*__
+#[fit] Actions Wrapper
+One Store,
+to rule them all 🧙‍♂️🌋💍
+<br/>
+
+- Calls directly other Stores
+- Friendly interface
+- Knows a lot about your App
+
+![left 170%](assets/pdf/actions_wrapper_3.pdf)
 
 ---
 
