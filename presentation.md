@@ -85,7 +85,7 @@ album.playCount = 24; // New play count: 24
 # MobX _**Computed Values**_
 
 [.code-highlight: 1-6]
-[.code-highlight: 8-9]
+[.code-highlight: 1-9]
 [.code-highlight: 8-11]
 [.code-highlight: 8-15]
 [.code-highlight: 1-15]
@@ -143,7 +143,7 @@ album.playCount = 9  // ----> React Render
 ```
 ---
 
-![inline](assets/gif/magic.gif)
+![inline 130%](assets/gif/wow.gif)
 
 ---
 
@@ -219,20 +219,6 @@ The only way to update the model
 
 ---
 
-#### MobX State Tree
-
-# How to connect
-# [fit]__*the Stores*__
-# with the View ?
-
----
-^ - Inject everywhere
-- Testing by overriding injections
-
-![fit](assets/codeExamples/mstAppJs/carbon.png)
-![fit](assets/codeExamples/mstViewJs/carbon.png)
-
----
 ### MobX State Tree __*Stores*__
 # [fit] Deep Dive 🐙
 
@@ -256,6 +242,21 @@ The only way to update the model
 - Inject anything
 - Environment is shared per tree
 - Useful for testing
+
+---
+
+#### MobX State Tree
+
+# How to connect
+# [fit]__*the Stores*__
+# with the View ?
+
+---
+^ - Inject everywhere
+- Testing by overriding injections
+
+![fit](assets/codeExamples/mstAppJs/carbon.png)
+![fit](assets/codeExamples/mstViewJs/carbon.png)
 
 ---
 
