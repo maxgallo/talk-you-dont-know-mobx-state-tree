@@ -475,14 +475,14 @@ const BlueRectangleStore = types.compose(
 
 ---
 
-
 #[fit] Takeaways 🖇
 
-- *MobX* opens the doors of _Reactive Programming_
-- *MobX State Tree* provides a structure 
+<br />
+
+- Use *MobX* to learn _Reactive Programming_
+- *MobX State Tree* provides a structure
 - Shape your tree & setup the communication
-- Embrace *Composition*!
-- Embrace *Reactivity*!
+- Embrace *Composition*, embrace *Reactivity*!
 
 ---
 
