@@ -48,7 +48,7 @@ _more:_ maxgallo.io
 [.build-lists: true]
 - State Management Library
 - Helps decoupling View from Business Logic
-- _Transparent_ Reactive Programming
+- Reactive Programming
 - Flexible / Unopinionated
 
 ---
